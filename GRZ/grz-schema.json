@@ -400,7 +400,7 @@
                     "description": "Tuple of tumor cell counts and how they were determined.",
                     "items": {
                       "type": "object",
-                      "requied": [
+                      "required": [
                         "count",
                         "method"
                       ],
