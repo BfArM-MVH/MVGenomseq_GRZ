@@ -40,7 +40,7 @@
           },
           "tanG": {
             "type": "string",
-            "description": "The VNg of the genomic data of the patient that will be reimbursed --> a unique 32-length byte code represented in a hex string of length 64.",
+            "description": "The VNg of the genomic data of the index patient that will be reimbursed --> a unique 32-length byte code represented in a hex string of length 64.",
             "pattern": "^[a-fA-F0-9]{64}$"
           },
           "localCaseId": {
@@ -92,7 +92,7 @@
         "items": {
           "type": "object",
           "required": [
-            "tanG",
+            "patientPseudonym",
             "gender",
             "relation",
             "mvConsentDate",
@@ -101,10 +101,9 @@
             "labData"
           ],
           "properties": {
-            "tanG": {
+            "patientPseudonym": {
               "type": "string",
-              "description": "The VNg of the genomic data of the donor --> a unique 32-length byte code represented in a hex string of length 64.",
-              "pattern": "^[a-fA-F0-9]{64}$"
+              "description": "The pseudonym of the patient, that is uniquely given by the Leistungserbringer for a patient; the pseudonym needs to be identifiable by the Leistungserbringer in case of changes to the consents."
             },
             "localCaseId": {
               "type": "string",
@@ -415,8 +414,8 @@
                           "type": "string",
                           "description": "Method used to determine cell count.",
                           "enum": [
-                            "Pathology",
-                            "Bioinformatics",
+                            "pathology",
+                            "bioinformatics",
                             "other",
                             "unknown"
                           ]
