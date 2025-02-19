@@ -158,7 +158,10 @@
                       "properties": {
                         "type": {
                           "type": "string",
-                          "enum": ["permit", "deny"]
+                          "enum": [
+                            "permit", 
+                            "deny"
+                          ]
                         }  
                       },
                       "date": {
@@ -168,9 +171,13 @@
                       "domain": {
                         "type": "string",
                         "description": "The domain of the Modellvorhaben consent which is affected",
-                        "enum": ["mvSequencing", "reIdentification", "caseIdentification"]
+                        "enum": [
+                          "mvSequencing", 
+                          "reIdentification", 
+                          "caseIdentification"
+                        ]
                       } 
-                    }
+                    } 
                   }
                 }
               }
@@ -439,7 +446,12 @@
                       },
                       "referenceGenome": {
                         "type": "string",
-                        "description": "Reference genome used"
+                        "description": "Reference genome used",
+                        "enum": [
+                          "hs1",
+                          "hg19",
+                          "hg38"
+                        ]
                       },
                       "percentBasesAboveQualityThreshold": {
                         "type": "object",
