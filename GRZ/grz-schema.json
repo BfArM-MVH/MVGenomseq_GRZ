@@ -126,7 +126,7 @@
                 "brother",
                 "sister",
                 "child",
-                "self",
+                "index",
                 "other"
               ]
             },
