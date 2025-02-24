@@ -448,9 +448,8 @@
                         "type": "string",
                         "description": "Reference genome used",
                         "enum": [
-                          "hs1",
-                          "hg19",
-                          "hg38"
+                          "GRCh37",
+                          "GRCh38"
                         ]
                       },
                       "percentBasesAboveQualityThreshold": {
