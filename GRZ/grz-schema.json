@@ -446,7 +446,7 @@
                       },
                       "referenceGenome": {
                         "type": "string",
-                        "description": "Reference genome used",
+                        "description": "Reference genome used according to the Genome Reference Consortium (https://www.ncbi.nlm.nih.gov/grc)",
                         "enum": [
                           "GRCh37",
                           "GRCh38"
