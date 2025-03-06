@@ -131,89 +131,84 @@
               ]
             },
             "mvConsent": {
-              "type": "array",
-              "description": "Multiple declarations of consent possible! must be assigned to the respective data sets.",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "date": {
-                    "type": "string",
-                    "description": "Date of the signature of the Modellvorhaben consent; Date in ISO 8601 format YYYY-MM-DD",
-                    "format": "date"
-                  },
-                  "presentedDate": {
-                    "type": "string",
-                    "description": "Date of the presentation of the Modellvorhaben consent; Date in ISO 8601 format YYYY-MM-DD",
-                    "format": "date"
-                  },
-                  "version": {
-                    "type": "string",
-                    "description": "Version of Modellvorhaben consent"
-                  },
-                  "scope": {
-                    "type": "array",
-                    "description": "The scope of the Modellvorhaben consent given by the donor.",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "permit", 
-                            "deny"
-                          ]
-                        }  
+              "type": "object",
+              "properties": {
+                "presentationDate": {
+                  "type": "string",
+                  "description": "Date of delivery. Date (in ISO 8601 format YYYY-MM-DD) on which the Model Project Declaration of Participation was presented to the patient, unless identical to the date of signature",
+                  "format": "date"
+                },
+                "version": {
+                  "type": "string",
+                  "description": "Version of the declaration of participation. Name and version of the declaration of participation in the MV GenomSeq, e.g.: 'Patient Info TE Consent MVGenomSeq vers01'"
+                },
+                "scope": {
+                  "type": "array",
+                  "description" : "Modules of the consent to MV: must have at least a permit of mvSequencing",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Consent or refusal to participate and consent, must be indicated for each option listed in the scope of consent.",
+                        "enum": [
+                          "permit",
+                          "deny"
+                        ]
                       },
                       "date": {
                         "type": "string",
+                        "description": "Date of signature of the pilot projects consent; in ISO 8601 format YYYY-MM-DD.",
                         "format": "date"
                       },
                       "domain": {
                         "type": "string",
-                        "description": "The domain of the Modellvorhaben consent which is affected",
+                        "description": "Scope of consent or revocation.",
                         "enum": [
-                          "mvSequencing", 
-                          "reIdentification", 
+                          "mvSequencing",
+                          "reIdentification",
                           "caseIdentification"
                         ]
-                      } 
-                    } 
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "date",
+                      "domain"
+                    ]
                   }
                 }
-              }
+              },
+              "required": [
+                "version",
+                "scope"
+              ]
             },
-            "researchConsent": {
+            "researchConsents": {
               "type": "array",
-              "description": "Multiple declarations of consent possible! must be assigned to the respective data sets.",
+              "description": "Research consents. Multiple declarations of consent are possible! Must be assigned to the respective data sets.",
+              "required": [
+                "schemaVersion",
+                "scope"
+              ],
               "items": {
                 "type": "object",
                 "properties": {
-                  "date": {
+                  "schemaVersion": {
                     "type": "string",
-                    "description": "Date of the signature of the research consent; Date in ISO 8601 format YYYY-MM-DD",
-                    "format": "date"
+                    "description": "Schema version of de.medizininformatikinitiative.kerndatensatz.consent",
+                    "enum": [
+                      "2025.0.1"
+                    ]
                   },
-                  "presentedDate": {
+                  "presentationDate": {
                     "type": "string",
-                    "description": "Date of the presentation of the research consent; Date in ISO 8601 format YYYY-MM-DD",
+                    "description": "Date of the delivery of the research consent in ISO 8601 format (YYYY-MM-DD)",
                     "format": "date"
-                  },
-                  "version": {
-                    "type": "string",
-                    "description": "Version of the research consent"
                   },
                   "scope": {
-                    "type": "string",
-                    "description": "Scope of the research consent in MII JSON format, all details inside."
-                  },
-                  "revocationDate": {
-                    "type": "string",
-                    "description": "Date of the revocation of the research consent; Date in ISO 8601 format YYYY-MM-DD",
-                    "format": "date"
-                  },
-                  "revocationScope": {
-                    "type": "string",
-                    "description": "Scope of the research consent revocation in MII JSON format, all details inside."
+                    "type": "object",
+                    "description": "Scope of the research consent in JSON format following the MII IG Consent v2025 FHIR schema. See 'https://www.medizininformatik-initiative.de/Kerndatensatz/KDS_Consent_V2025/MII-IG-Modul-Consent.html' and 'https://packages2.fhir.org/packages/de.medizininformatikinitiative.kerndatensatz.consent'."
                   }
                 }
               }
