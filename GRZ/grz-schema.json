@@ -15,6 +15,7 @@
           "submissionDate",
           "submissionType",
           "tanG",
+          "localCaseId",
           "coverageType",
           "submitterId",
           "genomicDataCenterId",
@@ -110,6 +111,7 @@
           "type": "object",
           "required": [
             "donorPseudonym",
+            "localCaseId",
             "gender",
             "relation",
             "mvConsent",
