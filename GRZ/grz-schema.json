@@ -15,6 +15,7 @@
           "submissionDate",
           "submissionType",
           "tanG",
+          "coverageType",
           "submitterId",
           "genomicDataCenterId",
           "clinicalDataNodeId",
@@ -46,6 +47,22 @@
           "localCaseId": {
             "type": "string",
             "description": "A local case identifier for synchronizing locally"
+          },
+          "coverageType": {
+            "type": "string",
+            "description": "Health insurance providers",
+            "enum": [
+              "GKV",
+              "PKV",
+              "BG",
+              "SEL",
+              "SOZ",
+              "GPV",
+              "PPV",
+              "BEI",
+              "SKT",
+              "UNK"
+            ]
           },
           "submitterId": {
             "type": "string",
@@ -128,22 +145,6 @@
                 "child",
                 "index",
                 "other"
-              ]
-            },
-            "coverageType": {
-              "type": "string",
-              "description": "Health insurance providers",
-              "enum": [
-                "GKV",
-                "PKV",
-                "BG",
-                "SEL",
-                "SOZ",
-                "GPV",
-                "PPV",
-                "BEI",
-                "SKT",
-                "UNK"
               ]
             },
             "mvConsent": {
