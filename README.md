@@ -1,3 +1,3 @@
 # MVGenomseq
 
-- added general metadata schema for submissions to the GRZ
+Hinweis: Am aktuellen Stand des grz-schemas werden während der Testphasen noch Änderungen vorgenommen.
