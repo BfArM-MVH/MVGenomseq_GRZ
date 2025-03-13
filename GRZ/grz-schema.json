@@ -20,6 +20,7 @@
           "submitterId",
           "genomicDataCenterId",
           "clinicalDataNodeId",
+          "diseaseType",
           "genomicStudyType",
           "genomicStudySubtype",
           "labName"
@@ -79,6 +80,15 @@
             "type": "string",
             "description": "ID of the clinical data node in the format KDKXXXnnn.",
             "pattern": "^(KDK)[A-Z0-9]{3}[0-9]{3}$"
+          },
+          "diseaseType": {
+            "type": "string",
+            "description": "Type of the disease",
+            "enum": [
+              "oncological",
+              "rare",
+              "hereditary"
+            ]
           },
           "genomicStudyType": {
             "type": "string",
