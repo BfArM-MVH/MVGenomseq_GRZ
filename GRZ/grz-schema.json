@@ -1,6 +1,6 @@
 {
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "version":"1.1.0",
+  "version":"1.1.1",
   "title":"Metadata Submission Genomic Data Center (GRZ)",
   "description":"General metadata schema for submissions to the GRZ",
   "type":"object",
@@ -542,9 +542,18 @@
                           "filePath",
                           "fileType",
                           "fileChecksum",
-                          "fileSizeInBytes",
-                          "readLength"
+                          "fileSizeInBytes"
                         ],
+                        "if": {
+                          "properties": {
+                            "fileType": {
+                              "enum": ["bam", "fastq"]
+                            }
+                          }
+                        },
+                        "then": {
+                          "required": ["readLength"]
+                        },
                         "properties":{
                           "filePath":{
                             "type":"string",
