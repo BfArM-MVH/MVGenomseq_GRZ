@@ -211,12 +211,12 @@
           "researchConsents":{
             "type":"array",
             "description":"Research consents. Multiple declarations of consent are possible! Must be assigned to the respective data sets.",
-            "required":[
-              "schemaVersion",
-              "scope"
-            ],
             "items":{
               "type":"object",
+              "required":[
+                "schemaVersion",
+                "scope"
+              ],
               "properties":{
                 "schemaVersion":{
                   "type":"string",
