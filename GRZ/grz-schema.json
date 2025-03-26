@@ -48,7 +48,7 @@
         },
         "localCaseId":{
           "type":"string",
-          "description":"A local case identifier for synchronizing locally"
+          "description":"A local case identifier of the Leistungserbringer to be able to track multiple submissions referring to the same index patient"
         },
         "coverageType":{
           "type":"string",
