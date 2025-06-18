@@ -52,7 +52,7 @@
         },
         "coverageType":{
           "type":"string",
-          "description":"Health insurance providers",
+          "description": "\"GKV\" gesetzliche Krankenversicherung, \"PKV\" private Krankenversicherung, \"BG\" Berufsgenossenschaft, \"SEL\" Selbstzahler, \"SOZ\" Sozialamt, \"GPV\" gesetzliche Pflegeversicherung, \"PPV\" private Pflegeversicherung, \"BEI\" Beihilfe, \"SKT\" Sonstige Kostenträger, \"UNK\" Unbekannt",
           "enum":[
             "GKV",
             "PKV",
