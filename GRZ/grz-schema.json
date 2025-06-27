@@ -1,6 +1,6 @@
 {
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "version":"1.1.8",
+  "version":"1.1.9",
   "title":"Metadata Submission Genomic Data Center (GRZ)",
   "description":"General metadata schema for submissions to the GRZ",
   "type":"object",
@@ -129,7 +129,7 @@
         "properties":{
           "donorPseudonym":{
             "type":"string",
-            "description":"A unique identifier given by the Leistungserbringer for each donor of a single, duo or trio sequencing; the donorPseudonym needs to be identifiable by the Leistungserbringer in case of changes to the consents by one of the donors. For Index patient use TanG."
+            "description":"A unique identifier given by the Leistungserbringer for each donor of a single, duo or trio sequencing; the donorPseudonym needs to be identifiable by the Leistungserbringer in case of changes to the consents by one of the donors. For Index patient use index."
           },
           "gender":{
             "type":"string",
@@ -557,7 +557,7 @@
                         "properties":{
                           "filePath":{
                             "type":"string",
-                            "description":"Path relative to the submission root, e.g.: sequencing_data/patient_001/patient_001_dna.bam"
+                            "description": "Path relative to the submission files directory, e.g.: 'patient_001/patient_001_dna.fastq.gz' if the file is located in <submission root>/files/patient_001/patient_001_dna.fastq.gz"
                           },
                           "fileType":{
                             "type":"string",
