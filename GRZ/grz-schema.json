@@ -38,7 +38,8 @@
             "initial",
             "followup",
             "addition",
-            "correction"
+            "correction",
+            "test"
           ]
         },
         "tanG":{
