@@ -1,0 +1,348 @@
+{
+  "submission": {
+    "submissionDate": "2026-03-19",
+    "submissionType": "initial",
+    "tanG": "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+    "localCaseId": "CASE-2026-00003",
+    "coverageType": "GKV",
+    "submitterId": "112233445",
+    "genomicDataCenterId": "GRZHAM001",
+    "clinicalDataNodeId": "KDKHAM001",
+    "diseaseType": "rare",
+    "genomicStudyType": "trio",
+    "genomicStudySubtype": "germline-only",
+    "labName": "Zentrum für Seltene Erkrankungen Musterstadt"
+  },
+  "donors": [
+    {
+      "donorPseudonym": "index",
+      "gender": "male",
+      "relation": "index",
+      "mvConsent": {
+        "presentationDate": "2026-03-01",
+        "version": "Patient Info TE Consent MVGenomSeq vers01",
+        "scope": [
+          {
+            "type": "permit",
+            "date": "2026-03-01",
+            "domain": "mvSequencing"
+          },
+          {
+            "type": "permit",
+            "date": "2026-03-01",
+            "domain": "reIdentification"
+          },
+          {
+            "type": "permit",
+            "date": "2026-03-01",
+            "domain": "caseIdentification"
+          }
+        ]
+      },
+      "researchConsents": [
+        {
+          "schemaVersion": "2025.0.1",
+          "presentationDate": "2026-03-01",
+          "noScopeJustification": "patient unable to consent"
+        }
+      ],
+      "labData": [
+        {
+          "labDataName": "Blut DNA index",
+          "tissueOntology": {
+            "name": "UBERON",
+            "version": "2024-09-26"
+          },
+          "tissueTypeId": "UBERON:0000178",
+          "tissueTypeName": "blood",
+          "sampleDate": "2026-03-05",
+          "sampleConservation": "cryo-frozen",
+          "sequenceType": "dna",
+          "sequenceSubtype": "germline",
+          "fragmentationMethod": "enzymatic",
+          "libraryType": "wes",
+          "libraryPrepKit": "Twist Human Core Exome",
+          "libraryPrepKitManufacturer": "Twist",
+          "sequencerModel": "NovaSeq 6000",
+          "sequencerManufacturer": "Illumina",
+          "kitName": "NovaSeq 6000 S2 Reagent Kit v1.5",
+          "kitManufacturer": "Illumina",
+          "enrichmentKitManufacturer": "Twist",
+          "enrichmentKitDescription": "Twist Human Core Exome Panel v2.0",
+          "barcode": "AACCGGTT",
+          "sequencingLayout": "paired-end",
+          "sequenceData": {
+            "bioinformaticsPipelineName": "nf-core/raredisease",
+            "bioinformaticsPipelineVersion": "2.1.0",
+            "referenceGenome": "GRCh38",
+            "percentBasesAboveQualityThreshold": {
+              "minimumQuality": 20,
+              "percent": 97.2
+            },
+            "meanDepthOfCoverage": 120.5,
+            "minCoverage": 20,
+            "targetedRegionsAboveMinCoverage": 0.99,
+            "nonCodingVariants": false,
+            "callerUsed": [
+              {
+                "name": "GATK HaplotypeCaller",
+                "version": "4.4.0.0"
+              }
+            ],
+            "files": [
+              {
+                "filePath": "index/index_wes_R1.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789",
+                "fileSizeInBytes": 8053063680,
+                "readOrder": "R1",
+                "readLength": 150
+              },
+              {
+                "filePath": "index/index_wes_R2.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "bcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789a",
+                "fileSizeInBytes": 8000000000,
+                "readOrder": "R2",
+                "readLength": 150
+              },
+              {
+                "filePath": "index/index_wes.cram",
+                "fileType": "cram",
+                "fileChecksum": "cdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789ab",
+                "fileSizeInBytes": 2684354560,
+                "readLength": 150
+              },
+              {
+                "filePath": "index/index_wes.g.vcf.gz",
+                "fileType": "gvcf",
+                "fileChecksum": "def0123456789abcdef0123456789abcdef0123456789abcdef0123456789abc",
+                "fileSizeInBytes": 524288000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "donorPseudonym": "donor-mother-001",
+      "gender": "female",
+      "relation": "mother",
+      "mvConsent": {
+        "presentationDate": "2026-03-01",
+        "version": "Patient Info TE Consent MVGenomSeq vers01",
+        "scope": [
+          {
+            "type": "permit",
+            "date": "2026-03-01",
+            "domain": "mvSequencing"
+          },
+          {
+            "type": "deny",
+            "date": "2026-03-01",
+            "domain": "reIdentification"
+          },
+          {
+            "type": "deny",
+            "date": "2026-03-01",
+            "domain": "caseIdentification"
+          }
+        ]
+      },
+      "researchConsents": [
+        {
+          "schemaVersion": "2025.0.1",
+          "presentationDate": "2026-03-01",
+          "noScopeJustification": "patient refuses to sign consent"
+        }
+      ],
+      "labData": [
+        {
+          "labDataName": "Blut DNA Mutter",
+          "tissueOntology": {
+            "name": "UBERON",
+            "version": "2024-09-26"
+          },
+          "tissueTypeId": "UBERON:0000178",
+          "tissueTypeName": "blood",
+          "sampleDate": "2026-03-05",
+          "sampleConservation": "cryo-frozen",
+          "sequenceType": "dna",
+          "sequenceSubtype": "germline",
+          "fragmentationMethod": "enzymatic",
+          "libraryType": "wes",
+          "libraryPrepKit": "Twist Human Core Exome",
+          "libraryPrepKitManufacturer": "Twist",
+          "sequencerModel": "NovaSeq 6000",
+          "sequencerManufacturer": "Illumina",
+          "kitName": "NovaSeq 6000 S2 Reagent Kit v1.5",
+          "kitManufacturer": "Illumina",
+          "enrichmentKitManufacturer": "Twist",
+          "enrichmentKitDescription": "Twist Human Core Exome Panel v2.0",
+          "barcode": "CCTTAAGG",
+          "sequencingLayout": "paired-end",
+          "sequenceData": {
+            "bioinformaticsPipelineName": "nf-core/raredisease",
+            "bioinformaticsPipelineVersion": "2.1.0",
+            "referenceGenome": "GRCh38",
+            "percentBasesAboveQualityThreshold": {
+              "minimumQuality": 20,
+              "percent": 96.8
+            },
+            "meanDepthOfCoverage": 118.3,
+            "minCoverage": 20,
+            "targetedRegionsAboveMinCoverage": 0.99,
+            "nonCodingVariants": false,
+            "callerUsed": [
+              {
+                "name": "GATK HaplotypeCaller",
+                "version": "4.4.0.0"
+              }
+            ],
+            "files": [
+              {
+                "filePath": "mother/mother_wes_R1.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "ef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcd",
+                "fileSizeInBytes": 7927234560,
+                "readOrder": "R1",
+                "readLength": 150
+              },
+              {
+                "filePath": "mother/mother_wes_R2.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "f0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcde",
+                "fileSizeInBytes": 7900000000,
+                "readOrder": "R2",
+                "readLength": 150
+              },
+              {
+                "filePath": "mother/mother_wes.cram",
+                "fileType": "cram",
+                "fileChecksum": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+                "fileSizeInBytes": 2621440000,
+                "readLength": 150
+              },
+              {
+                "filePath": "mother/mother_wes.g.vcf.gz",
+                "fileType": "gvcf",
+                "fileChecksum": "123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0",
+                "fileSizeInBytes": 512000000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "donorPseudonym": "donor-father-001",
+      "gender": "male",
+      "relation": "father",
+      "mvConsent": {
+        "presentationDate": "2026-03-01",
+        "version": "Patient Info TE Consent MVGenomSeq vers01",
+        "scope": [
+          {
+            "type": "permit",
+            "date": "2026-03-01",
+            "domain": "mvSequencing"
+          },
+          {
+            "type": "permit",
+            "date": "2026-03-01",
+            "domain": "reIdentification"
+          },
+          {
+            "type": "deny",
+            "date": "2026-03-01",
+            "domain": "caseIdentification"
+          }
+        ]
+      },
+      "researchConsents": [
+        {
+          "schemaVersion": "2025.0.1",
+          "presentationDate": "2026-03-01",
+          "noScopeJustification": "patient refuses to sign consent"
+        }
+      ],
+      "labData": [
+        {
+          "labDataName": "Blut DNA Vater",
+          "tissueOntology": {
+            "name": "UBERON",
+            "version": "2024-09-26"
+          },
+          "tissueTypeId": "UBERON:0000178",
+          "tissueTypeName": "blood",
+          "sampleDate": "2026-03-05",
+          "sampleConservation": "cryo-frozen",
+          "sequenceType": "dna",
+          "sequenceSubtype": "germline",
+          "fragmentationMethod": "enzymatic",
+          "libraryType": "wes",
+          "libraryPrepKit": "Twist Human Core Exome",
+          "libraryPrepKitManufacturer": "Twist",
+          "sequencerModel": "NovaSeq 6000",
+          "sequencerManufacturer": "Illumina",
+          "kitName": "NovaSeq 6000 S2 Reagent Kit v1.5",
+          "kitManufacturer": "Illumina",
+          "enrichmentKitManufacturer": "Twist",
+          "enrichmentKitDescription": "Twist Human Core Exome Panel v2.0",
+          "barcode": "GGCCTTAA",
+          "sequencingLayout": "paired-end",
+          "sequenceData": {
+            "bioinformaticsPipelineName": "nf-core/raredisease",
+            "bioinformaticsPipelineVersion": "2.1.0",
+            "referenceGenome": "GRCh38",
+            "percentBasesAboveQualityThreshold": {
+              "minimumQuality": 20,
+              "percent": 97.0
+            },
+            "meanDepthOfCoverage": 122.1,
+            "minCoverage": 20,
+            "targetedRegionsAboveMinCoverage": 0.99,
+            "nonCodingVariants": false,
+            "callerUsed": [
+              {
+                "name": "GATK HaplotypeCaller",
+                "version": "4.4.0.0"
+              }
+            ],
+            "files": [
+              {
+                "filePath": "father/father_wes_R1.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "23456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef01",
+                "fileSizeInBytes": 8106127360,
+                "readOrder": "R1",
+                "readLength": 150
+              },
+              {
+                "filePath": "father/father_wes_R2.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "3456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef012",
+                "fileSizeInBytes": 8050000000,
+                "readOrder": "R2",
+                "readLength": 150
+              },
+              {
+                "filePath": "father/father_wes.cram",
+                "fileType": "cram",
+                "fileChecksum": "456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123",
+                "fileSizeInBytes": 2700000000,
+                "readLength": 150
+              },
+              {
+                "filePath": "father/father_wes.g.vcf.gz",
+                "fileType": "gvcf",
+                "fileChecksum": "56789abcdef0123456789abcdef0123456789abcdef0123456789abcdef01234",
+                "fileSizeInBytes": 518000000
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

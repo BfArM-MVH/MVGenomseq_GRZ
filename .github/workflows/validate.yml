@@ -1,0 +1,51 @@
+name: Validate JSON Schema Examples
+
+on:
+  push:
+    paths:
+      - 'GRZ/grz-schema.json'
+      - 'GRZ/examples/example_*.json'
+      - 'Prüfbericht/Modellvorhaben_SubmissionSchema.json'
+      - 'Prüfbericht/submission_example.json'
+  pull_request:
+    paths:
+      - 'GRZ/grz-schema.json'
+      - 'GRZ/examples/example_*.json'
+      - 'Prüfbericht/Modellvorhaben_SubmissionSchema.json'
+      - 'Prüfbericht/submission_example.json'
+
+jobs:
+  validate:
+    name: Validate examples against schema
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ajv-cli with Draft 2020-12 support
+        # Note: --validate-formats=false suppresses "unknown format" warnings for
+        # the "date" format keyword; structural validation is unaffected.
+        run: npm install -g ajv-cli
+
+      - name: Validate GRZ submission examples (Draft 2020-12)
+        run: |
+          ajv validate \
+            --spec=draft2020 \
+            --strict=false \
+            --validate-formats=false \
+            -s GRZ/grz-schema.json \
+            -d "GRZ/examples/example_*.json"
+
+      - name: Validate Prüfbericht example (Draft-07)
+        run: |
+          ajv validate \
+            --strict=false \
+            --validate-formats=false \
+            -s "Prüfbericht/Modellvorhaben_SubmissionSchema.json" \
+            -d "Prüfbericht/submission_example.json"
