@@ -1,6 +1,6 @@
 {
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "version":"1.3.0",
+  "version":"1.4.0",
   "title":"Metadata Submission Genomic Data Center (GRZ)",
   "description":"General metadata schema for submissions to the GRZ",
   "type":"object",
@@ -118,6 +118,7 @@
     "donors":{
       "type":"array",
       "description":"List of donors including the index patient.",
+      "minItems":1,
       "items":{
         "type":"object",
         "required":[
@@ -158,6 +159,11 @@
           },
           "mvConsent":{
             "type":"object",
+            "required":[
+              "presentationDate",
+              "version",
+              "scope"
+            ],
             "properties":{
               "presentationDate":{
                 "type":"string",
@@ -171,6 +177,15 @@
               "scope":{
                 "type":"array",
                 "description":"Modules of the consent to MV: must have at least a permit of mvSequencing",
+                "minItems":1,
+                "contains":{
+                  "properties":{
+                    "domain":{ "const":"mvSequencing" },
+                    "type":{ "const":"permit" }
+                  },
+                  "required":["domain","type"]
+                },
+                "minContains":1,
                 "items":{
                   "type":"object",
                   "properties":{
@@ -204,15 +219,12 @@
                   ]
                 }
               }
-            },
-            "required":[
-              "version",
-              "scope"
-            ]
+            }
           },
           "researchConsents":{
             "type":"array",
             "description":"Research consents. Multiple declarations of consent are possible! Must be assigned to the respective data sets.",
+            "minItems":1,
             "items":{
               "type":"object",
               "required":[
@@ -235,20 +247,20 @@
                   "type":"object",
                   "description":"Scope of the research consent in JSON format following the MII IG Consent v2025 FHIR schema. See 'https://www.medizininformatik-initiative.de/Kerndatensatz/KDS_Consent_V2025/MII-IG-Modul-Consent.html' and 'https://packages2.fhir.org/packages/de.medizininformatikinitiative.kerndatensatz.consent'."
                 },
-                "noScopeJustification": {
-                  "type": "string",
-                  "description": "Justification if no scope object is present.",
-                  "enum": [
+                "noScopeJustification":{
+                  "type":"string",
+                  "description":"Justification if no scope object is present.",
+                  "enum":[
                     "patient unable to consent",
                     "patient refuses to sign consent",
                     "patient did not return consent documents",
                     "other patient-related reason",
                     "consent information cannot be submitted by LE due to technical reason",
                     "consent is not implemented at LE due to organizational issues"
-                  ]  
-                }  
+                  ]
+                }
               },
-              "oneOf": [
+              "oneOf":[
                 {"required":["scope"]},
                 {"required":["noScopeJustification"]}
               ]
@@ -257,6 +269,7 @@
           "labData":{
             "type":"array",
             "description":"Lab data related to the donor.",
+            "minItems":1,
             "items":{
               "type":"object",
               "required":[
@@ -279,8 +292,18 @@
                 "enrichmentKitManufacturer",
                 "enrichmentKitDescription",
                 "barcode",
-                "sequencingLayout"
+                "sequencingLayout",
+                "sequenceData"
               ],
+              "if":{
+                "properties":{
+                  "sequenceSubtype":{ "const":"somatic" }
+                },
+                "required":["sequenceSubtype"]
+              },
+              "then":{
+                "required":["tumorCellCount"]
+              },
               "properties":{
                 "labDataName":{
                   "type":"string",
@@ -429,7 +452,7 @@
                 },
                 "tumorCellCount":{
                   "type":"array",
-                  "description":"Tuple of tumor cell counts and how they were determined.",
+                  "description":"Tuple of tumor cell counts and how they were determined. Required when sequenceSubtype is 'somatic'.",
                   "items":{
                     "type":"object",
                     "required":[
@@ -491,6 +514,10 @@
                     "percentBasesAboveQualityThreshold":{
                       "type":"object",
                       "description":"Percentage of bases with a specified minimum quality threshold, according to https://www.bfarm.de/SharedDocs/Downloads/DE/Forschung/modellvorhaben-genomsequenzierung/Qs-durch-GRZ.pdf?__blob=publicationFile",
+                      "required":[
+                        "minimumQuality",
+                        "percent"
+                      ],
                       "properties":{
                         "minimumQuality":{
                           "type":"number",
@@ -503,11 +530,7 @@
                           "minimum":0,
                           "maximum":100
                         }
-                      },
-                      "required":[
-                        "minimumQuality",
-                        "percent"
-                      ]
+                      }
                     },
                     "meanDepthOfCoverage":{
                       "type":"number",
@@ -532,6 +555,7 @@
                     "callerUsed":{
                       "type":"array",
                       "description":"Caller that is used in the pipeline",
+                      "minItems":1,
                       "items":{
                         "type":"object",
                         "required":[
@@ -553,6 +577,7 @@
                     "files":{
                       "type":"array",
                       "description":"List of files generated and required in this analysis.",
+                      "minItems":1,
                       "items":{
                         "type":"object",
                         "required":[
@@ -561,27 +586,29 @@
                           "fileChecksum",
                           "fileSizeInBytes"
                         ],
-                        "if": {
-                          "properties": {
-                            "fileType": {
-                              "enum": ["bam", "fastq"]
+                        "if":{
+                          "properties":{
+                            "fileType":{
+                              "enum":["bam","fastq","cram"]
                             }
                           }
                         },
-                        "then": {
-                          "required": ["readLength"]
+                        "then":{
+                          "required":["readLength"]
                         },
                         "properties":{
                           "filePath":{
                             "type":"string",
-                            "description": "Path relative to the submission files directory, e.g.: 'patient_001/patient_001_dna.fastq.gz' if the file is located in <submission root>/files/patient_001/patient_001_dna.fastq.gz"
+                            "description":"Path relative to the submission files directory, e.g.: 'patient_001/patient_001_dna.fastq.gz' if the file is located in <submission root>/files/patient_001/patient_001_dna.fastq.gz"
                           },
                           "fileType":{
                             "type":"string",
                             "description":"Type of the file; if BED file is submitted, only 1 file is allowed.",
                             "enum":[
                               "bam",
+                              "cram",
                               "vcf",
+                              "gvcf",
                               "bed",
                               "fastq"
                             ]
@@ -600,7 +627,7 @@
                             "pattern":"^[a-fA-F0-9]{64}$"
                           },
                           "fileSizeInBytes":{
-                            "type":"number",
+                            "type":"integer",
                             "description":"Size of the file in bytes",
                             "minimum":0
                           },

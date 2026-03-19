@@ -1,0 +1,225 @@
+{
+  "submission": {
+    "submissionDate": "2026-03-19",
+    "submissionType": "initial",
+    "tanG": "f1e2d3c4b5a6f1e2d3c4b5a6f1e2d3c4b5a6f1e2d3c4b5a6f1e2d3c4b5a6f1e2",
+    "localCaseId": "CASE-2026-00002",
+    "coverageType": "GKV",
+    "submitterId": "987654321",
+    "genomicDataCenterId": "GRZMUC001",
+    "clinicalDataNodeId": "KDKMUC001",
+    "diseaseType": "oncological",
+    "genomicStudyType": "duo",
+    "genomicStudySubtype": "tumor+germline",
+    "labName": "Molekularpathologie Universitätsklinikum Musterstadt"
+  },
+  "donors": [
+    {
+      "donorPseudonym": "index",
+      "gender": "male",
+      "relation": "index",
+      "mvConsent": {
+        "presentationDate": "2026-02-01",
+        "version": "Patient Info TE Consent MVGenomSeq vers01",
+        "scope": [
+          {
+            "type": "permit",
+            "date": "2026-02-01",
+            "domain": "mvSequencing"
+          },
+          {
+            "type": "permit",
+            "date": "2026-02-01",
+            "domain": "reIdentification"
+          },
+          {
+            "type": "permit",
+            "date": "2026-02-01",
+            "domain": "caseIdentification"
+          }
+        ]
+      },
+      "researchConsents": [
+        {
+          "schemaVersion": "2025.0.1",
+          "presentationDate": "2026-02-01",
+          "scope": {
+            "resourceType": "Consent",
+            "status": "active",
+            "scope": {
+              "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/consentscope", "code": "research" }]
+            },
+            "category": [
+              {
+                "coding": [{ "system": "https://www.medizininformatik-initiative.de/fhir/modul-consent/CodeSystem/mii-cs-consent-consent_category", "code": "2.16.840.1.113883.3.1937.777.24.2.184" }]
+              }
+            ],
+            "policyRule": {
+              "coding": [{ "system": "https://www.medizininformatik-initiative.de/fhir/modul-consent/CodeSystem/mii-cs-consent-mii_consent_policy", "code": "MDAT_wissenschaftlich_nutzen_EU_DSGVO_NIVEAU" }]
+            }
+          }
+        }
+      ],
+      "labData": [
+        {
+          "labDataName": "Blut DNA normal",
+          "tissueOntology": {
+            "name": "UBERON",
+            "version": "2024-09-26"
+          },
+          "tissueTypeId": "UBERON:0000178",
+          "tissueTypeName": "blood",
+          "sampleDate": "2026-02-05",
+          "sampleConservation": "cryo-frozen",
+          "sequenceType": "dna",
+          "sequenceSubtype": "germline",
+          "fragmentationMethod": "enzymatic",
+          "libraryType": "wgs",
+          "libraryPrepKit": "Illumina DNA PCR-Free Library Prep",
+          "libraryPrepKitManufacturer": "Illumina",
+          "sequencerModel": "NovaSeq X Plus",
+          "sequencerManufacturer": "Illumina",
+          "kitName": "NovaSeq X Series 25B Reagent Kit",
+          "kitManufacturer": "Illumina",
+          "enrichmentKitManufacturer": "none",
+          "enrichmentKitDescription": "none",
+          "barcode": "TTGGCCAA",
+          "sequencingLayout": "paired-end",
+          "sequenceData": {
+            "bioinformaticsPipelineName": "nf-core/sarek",
+            "bioinformaticsPipelineVersion": "3.4.0",
+            "referenceGenome": "GRCh38",
+            "percentBasesAboveQualityThreshold": {
+              "minimumQuality": 30,
+              "percent": 92.1
+            },
+            "meanDepthOfCoverage": 36.8,
+            "minCoverage": 20,
+            "targetedRegionsAboveMinCoverage": 0.98,
+            "nonCodingVariants": false,
+            "callerUsed": [
+              {
+                "name": "Mutect2",
+                "version": "4.4.0.0"
+              }
+            ],
+            "files": [
+              {
+                "filePath": "index/normal/normal_wgs_R1.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "112233445566778899aabbccddeeff00112233445566778899aabbccddeeff00",
+                "fileSizeInBytes": 54525952000,
+                "readOrder": "R1",
+                "readLength": 151
+              },
+              {
+                "filePath": "index/normal/normal_wgs_R2.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "223344556677889900aabbccddeeff00112233445566778899aabbccddeeff01",
+                "fileSizeInBytes": 54400000000,
+                "readOrder": "R2",
+                "readLength": 151
+              },
+              {
+                "filePath": "index/normal/normal_wgs.cram",
+                "fileType": "cram",
+                "fileChecksum": "334455667788990011aabbccddeeff00112233445566778899aabbccddeeff02",
+                "fileSizeInBytes": 19327352832,
+                "readLength": 151
+              }
+            ]
+          }
+        },
+        {
+          "labDataName": "Tumor DNA FFPE",
+          "tissueOntology": {
+            "name": "UBERON",
+            "version": "2024-09-26"
+          },
+          "tissueTypeId": "UBERON:0001007",
+          "tissueTypeName": "digestive system",
+          "sampleDate": "2026-01-20",
+          "sampleConservation": "ffpe",
+          "sequenceType": "dna",
+          "sequenceSubtype": "somatic",
+          "fragmentationMethod": "enzymatic",
+          "libraryType": "wgs",
+          "libraryPrepKit": "Illumina DNA Prep with Enrichment",
+          "libraryPrepKitManufacturer": "Illumina",
+          "sequencerModel": "NovaSeq X Plus",
+          "sequencerManufacturer": "Illumina",
+          "kitName": "NovaSeq X Series 25B Reagent Kit",
+          "kitManufacturer": "Illumina",
+          "enrichmentKitManufacturer": "none",
+          "enrichmentKitDescription": "none",
+          "barcode": "GGAATTCC",
+          "sequencingLayout": "paired-end",
+          "tumorCellCount": [
+            {
+              "count": 72.0,
+              "method": "pathology"
+            },
+            {
+              "count": 68.5,
+              "method": "bioinformatics"
+            }
+          ],
+          "sequenceData": {
+            "bioinformaticsPipelineName": "nf-core/sarek",
+            "bioinformaticsPipelineVersion": "3.4.0",
+            "referenceGenome": "GRCh38",
+            "percentBasesAboveQualityThreshold": {
+              "minimumQuality": 30,
+              "percent": 88.3
+            },
+            "meanDepthOfCoverage": 92.4,
+            "minCoverage": 30,
+            "targetedRegionsAboveMinCoverage": 0.95,
+            "nonCodingVariants": false,
+            "callerUsed": [
+              {
+                "name": "Mutect2",
+                "version": "4.4.0.0"
+              },
+              {
+                "name": "Strelka2",
+                "version": "2.9.10"
+              }
+            ],
+            "files": [
+              {
+                "filePath": "index/tumor/tumor_wgs_R1.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "445566778899001122aabbccddeeff00112233445566778899aabbccddeeff03",
+                "fileSizeInBytes": 148897587200,
+                "readOrder": "R1",
+                "readLength": 151
+              },
+              {
+                "filePath": "index/tumor/tumor_wgs_R2.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "556677889900112233aabbccddeeff00112233445566778899aabbccddeeff04",
+                "fileSizeInBytes": 148600000000,
+                "readOrder": "R2",
+                "readLength": 151
+              },
+              {
+                "filePath": "index/tumor/tumor_wgs.cram",
+                "fileType": "cram",
+                "fileChecksum": "667788990011223344aabbccddeeff00112233445566778899aabbccddeeff05",
+                "fileSizeInBytes": 52613349376,
+                "readLength": 151
+              },
+              {
+                "filePath": "index/tumor_vs_normal_somatic.vcf.gz",
+                "fileType": "vcf",
+                "fileChecksum": "778899001122334455aabbccddeeff00112233445566778899aabbccddeeff06",
+                "fileSizeInBytes": 209715200
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

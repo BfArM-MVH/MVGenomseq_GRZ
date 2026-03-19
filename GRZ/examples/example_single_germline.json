@@ -1,0 +1,128 @@
+{
+  "submission": {
+    "submissionDate": "2026-03-19",
+    "submissionType": "initial",
+    "tanG": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+    "localCaseId": "CASE-2026-00001",
+    "coverageType": "GKV",
+    "submitterId": "123456789",
+    "genomicDataCenterId": "GRZBER001",
+    "clinicalDataNodeId": "KDKBER001",
+    "diseaseType": "rare",
+    "genomicStudyType": "single",
+    "genomicStudySubtype": "germline-only",
+    "labName": "Institut für Humangenetik Musterstadt"
+  },
+  "donors": [
+    {
+      "donorPseudonym": "index",
+      "gender": "female",
+      "relation": "index",
+      "mvConsent": {
+        "presentationDate": "2026-01-10",
+        "version": "Patient Info TE Consent MVGenomSeq vers01",
+        "scope": [
+          {
+            "type": "permit",
+            "date": "2026-01-10",
+            "domain": "mvSequencing"
+          },
+          {
+            "type": "permit",
+            "date": "2026-01-10",
+            "domain": "reIdentification"
+          },
+          {
+            "type": "deny",
+            "date": "2026-01-10",
+            "domain": "caseIdentification"
+          }
+        ]
+      },
+      "researchConsents": [
+        {
+          "schemaVersion": "2025.0.1",
+          "presentationDate": "2026-01-10",
+          "noScopeJustification": "patient refuses to sign consent"
+        }
+      ],
+      "labData": [
+        {
+          "labDataName": "Blut DNA germline",
+          "tissueOntology": {
+            "name": "UBERON",
+            "version": "2024-09-26"
+          },
+          "tissueTypeId": "UBERON:0000178",
+          "tissueTypeName": "blood",
+          "sampleDate": "2026-01-15",
+          "sampleConservation": "cryo-frozen",
+          "sequenceType": "dna",
+          "sequenceSubtype": "germline",
+          "fragmentationMethod": "enzymatic",
+          "libraryType": "wgs",
+          "libraryPrepKit": "Illumina DNA PCR-Free Library Prep",
+          "libraryPrepKitManufacturer": "Illumina",
+          "sequencerModel": "NovaSeq X Plus",
+          "sequencerManufacturer": "Illumina",
+          "kitName": "NovaSeq X Series 25B Reagent Kit",
+          "kitManufacturer": "Illumina",
+          "enrichmentKitManufacturer": "none",
+          "enrichmentKitDescription": "none",
+          "barcode": "ACGTACGT",
+          "sequencingLayout": "paired-end",
+          "sequenceData": {
+            "bioinformaticsPipelineName": "nf-core/sarek",
+            "bioinformaticsPipelineVersion": "3.4.0",
+            "referenceGenome": "GRCh38",
+            "percentBasesAboveQualityThreshold": {
+              "minimumQuality": 30,
+              "percent": 91.5
+            },
+            "meanDepthOfCoverage": 35.2,
+            "minCoverage": 20,
+            "targetedRegionsAboveMinCoverage": 0.97,
+            "nonCodingVariants": false,
+            "callerUsed": [
+              {
+                "name": "DeepVariant",
+                "version": "1.6.0"
+              }
+            ],
+            "files": [
+              {
+                "filePath": "index/index_wgs_R1.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "aabbccddeeff00112233445566778899aabbccddeeff00112233445566778899",
+                "fileSizeInBytes": 52428800000,
+                "readOrder": "R1",
+                "readLength": 151
+              },
+              {
+                "filePath": "index/index_wgs_R2.fastq.gz",
+                "fileType": "fastq",
+                "fileChecksum": "bbccddeeff00112233445566778899aabbccddeeff00112233445566778899aa",
+                "fileSizeInBytes": 52300800000,
+                "readOrder": "R2",
+                "readLength": 151
+              },
+              {
+                "filePath": "index/index_wgs.cram",
+                "fileType": "cram",
+                "fileChecksum": "ccddeeff00112233445566778899aabbccddeeff00112233445566778899aabb",
+                "fileSizeInBytes": 18253611008,
+                "readLength": 151
+              },
+              {
+                "filePath": "index/index_wgs.vcf.gz",
+                "fileType": "vcf",
+                "fileChecksum": "ddeeff00112233445566778899aabbccddeeff00112233445566778899aabbcc",
+                "fileSizeInBytes": 104857600
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
