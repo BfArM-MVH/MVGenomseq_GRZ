@@ -342,28 +342,25 @@
                 },
                 "sequenceSubtype":{
                   "type":"string",
-                  "description":"Subtype of sequence (germline, somatic, etc.)",
+                  "description":"Subtype of the sequence: 'germline' or 'somatic'.",
                   "enum":[
                     "germline",
-                    "somatic",
-                    "other",
-                    "unknown"
+                    "somatic"
                   ]
                 },
                 "fragmentationMethod":{
                   "type":"string",
-                  "description":"Fragmentation method",
+                  "description":"Method used to fragment the nucleic acid: 'sonication', 'enzymatic', 'none' where the material was not fragmented, or 'other' for a method not covered by this list.",
                   "enum":[
                     "sonication",
                     "enzymatic",
                     "none",
-                    "other",
-                    "unknown"
+                    "other"
                   ]
                 },
                 "libraryType":{
                   "type":"string",
-                  "description":"Library type",
+                  "description":"Library type: 'wgs' whole genome sequencing, 'wes' whole exome sequencing, 'panel' a targeted gene panel, each with an '_lr' variant for long-read sequencing; 'other' a library type not covered by this list.",
                   "enum":[
                     "panel",
                     "panel_lr",
@@ -371,10 +368,7 @@
                     "wes_lr",
                     "wgs",
                     "wgs_lr",
-                    "wxs",
-                    "wxs_lr",
-                    "other",
-                    "unknown"
+                    "other"
                   ]
                 },
                 "libraryPrepKit":{
@@ -424,11 +418,10 @@
                 },
                 "sequencingLayout":{
                   "type":"string",
-                  "description":"The sequencing layout, aka the end type of sequencing.",
+                  "description":"The sequencing layout, aka the end type of sequencing: 'single-end' one read per fragment, 'paired-end' two reads per fragment, 'other' a layout not covered by this list.",
                   "enum":[
                     "single-end",
                     "paired-end",
-                    "reverse",
                     "other"
                   ]
                 },
