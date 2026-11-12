@@ -128,6 +128,16 @@
           "researchConsents",
           "labData"
         ],
+        "allOf":[
+          {
+            "if":{
+              "required":["relation"],
+              "properties":{"relation":{"not":{"const":"index"}}}
+            },
+            "then":{"required":["caseControlStatus"]},
+            "else":{"properties":{"caseControlStatus":{"const":"case"}}}
+          }
+        ],
         "properties":{
           "donorPseudonym":{
             "type":"string",
@@ -154,6 +164,15 @@
               "child",
               "index",
               "other"
+            ]
+          },
+          "caseControlStatus":{
+            "type":"string",
+            "description":"Whether this donor is a case (affected) or a control (unaffected) for the phenotype under consideration, as in GHGA's case_control_status. Required for every donor except the index patient, who is always 'case' and may omit it.",
+            "enum":[
+              "case",
+              "control",
+              "unknown"
             ]
           },
           "mvConsent":{
