@@ -286,6 +286,36 @@
                 "barcode",
                 "sequencingLayout"
               ],
+              "allOf":[
+                {
+                  "if":{
+                    "required":["tissueOntology"],
+                    "properties":{"tissueOntology":{"required":["name"],"properties":{"name":{"const":"bto"}}}}
+                  },
+                  "then":{"properties":{"tissueTypeId":{"pattern":"^BTO:[0-9]{7}$"}}}
+                },
+                {
+                  "if":{
+                    "required":["tissueOntology"],
+                    "properties":{"tissueOntology":{"required":["name"],"properties":{"name":{"const":"uberon"}}}}
+                  },
+                  "then":{"properties":{"tissueTypeId":{"pattern":"^UBERON:[0-9]{7}$"}}}
+                },
+                {
+                  "if":{
+                    "required":["tissueOntology"],
+                    "properties":{"tissueOntology":{"required":["name"],"properties":{"name":{"const":"snomed_ct"}}}}
+                  },
+                  "then":{"properties":{"tissueTypeId":{"pattern":"^[0-9]{6,18}$"}}}
+                },
+                {
+                  "if":{
+                    "required":["tissueOntology"],
+                    "properties":{"tissueOntology":{"required":["name"],"properties":{"name":{"const":"icd_o_3_topography"}}}}
+                  },
+                  "then":{"properties":{"tissueTypeId":{"pattern":"^C[0-9]{2}(\\.[0-9])?$"}}}
+                }
+              ],
               "properties":{
                 "labDataName":{
                   "type":"string",
@@ -297,20 +327,38 @@
                     "name",
                     "version"
                   ],
+                  "if":{
+                    "required":["name"],
+                    "properties":{"name":{"const":"other"}}
+                  },
+                  "then":{"required":["nameOther"]},
                   "properties":{
                     "name":{
                       "type":"string",
-                      "description":"Name of the tissue ontology"
+                      "description":"Ontology or classification from which tissueTypeId is taken. 'bto': BRENDA Tissue Ontology. 'uberon': Uberon anatomy ontology. 'snomed_ct': SNOMED CT. 'icd_o_3_topography': the topography (site) axis of ICD-O-3. All of these name anatomical structures or sites; classifications of the disease, such as ICD-O-3 morphology or OncoTree, do not belong here. 'other': another tissue ontology, which must be named in nameOther.",
+                      "enum":[
+                        "bto",
+                        "uberon",
+                        "snomed_ct",
+                        "icd_o_3_topography",
+                        "other"
+                      ]
+                    },
+                    "nameOther":{
+                      "type":"string",
+                      "description":"Name of the tissue ontology actually used. Required if name is 'other'.",
+                      "minLength":1
                     },
                     "version":{
                       "type":"string",
-                      "description":"Version of the tissue ontology"
+                      "description":"Version or release of the tissue ontology"
                     }
                   }
                 },
                 "tissueTypeId":{
                   "type":"string",
-                  "description":"Tissue ID according to the ontology in use."
+                  "description":"Identifier of the tissue in the ontology named by tissueOntology.name, in one fixed form: 'BTO:0000089' for bto, 'UBERON:0000178' for uberon, the plain concept identifier (e.g. '420135007') for snomed_ct, and the topography code (e.g. 'C42.0') for icd_o_3_topography.",
+                  "minLength":1
                 },
                 "tissueTypeName":{
                   "type":"string",
