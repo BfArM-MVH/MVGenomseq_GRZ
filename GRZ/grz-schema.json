@@ -128,16 +128,6 @@
           "researchConsents",
           "labData"
         ],
-        "allOf":[
-          {
-            "if":{
-              "required":["relation"],
-              "properties":{"relation":{"not":{"const":"index"}}}
-            },
-            "then":{"required":["caseControlStatus"]},
-            "else":{"properties":{"caseControlStatus":{"const":"case"}}}
-          }
-        ],
         "properties":{
           "donorPseudonym":{
             "type":"string",
@@ -164,15 +154,6 @@
               "child",
               "index",
               "other"
-            ]
-          },
-          "caseControlStatus":{
-            "type":"string",
-            "description":"Whether this donor is a case (affected) or a control (unaffected) for the phenotype under consideration, as in GHGA's case_control_status. Required for every donor except the index patient, who is always 'case' and may omit it.",
-            "enum":[
-              "case",
-              "control",
-              "unknown"
             ]
           },
           "mvConsent":{
@@ -292,6 +273,7 @@
                 "sampleConservation",
                 "sequenceType",
                 "sequenceSubtype",
+                "caseControlStatus",
                 "fragmentationMethod",
                 "libraryType",
                 "libraryPrepKit",
@@ -304,6 +286,15 @@
                 "enrichmentKitDescription",
                 "barcode",
                 "sequencingLayout"
+              ],
+              "allOf":[
+                {
+                  "if":{
+                    "required":["sequenceSubtype"],
+                    "properties":{"sequenceSubtype":{"const":"somatic"}}
+                  },
+                  "then":{"properties":{"caseControlStatus":{"const":"case"}}}
+                }
               ],
               "properties":{
                 "labDataName":{
@@ -366,6 +357,15 @@
                     "germline",
                     "somatic",
                     "other",
+                    "unknown"
+                  ]
+                },
+                "caseControlStatus":{
+                  "type":"string",
+                  "description":"Role of this sample in the study. 'case': a tumor sample, or, in submissions without a tumor sample, a sample from a donor who is affected by the disease under investigation. 'control': the matched normal sample of a tumor, or a sample from a donor who is not affected. 'unknown': it is not known whether the donor is affected. Tumor (somatic) samples are always 'case'.",
+                  "enum":[
+                    "case",
+                    "control",
                     "unknown"
                   ]
                 },
