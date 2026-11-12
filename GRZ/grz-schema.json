@@ -287,15 +287,6 @@
                 "barcode",
                 "sequencingLayout"
               ],
-              "allOf":[
-                {
-                  "if":{
-                    "required":["sequenceSubtype"],
-                    "properties":{"sequenceSubtype":{"const":"somatic"}}
-                  },
-                  "then":{"properties":{"caseControlStatus":{"const":"case"}}}
-                }
-              ],
               "properties":{
                 "labDataName":{
                   "type":"string",
@@ -362,7 +353,7 @@
                 },
                 "caseControlStatus":{
                   "type":"string",
-                  "description":"Role of this sample in the study. 'case': a tumor sample, or, in submissions without a tumor sample, a sample from a donor who is affected by the disease under investigation. 'control': the matched normal sample of a tumor, or a sample from a donor who is not affected. 'unknown': it is not known whether the donor is affected. Tumor (somatic) samples are always 'case'.",
+                  "description":"Whether this sample represents the disease under investigation. 'case': it does, i.e. a tumor sample, or, in submissions without a tumor sample, a sample from an affected donor. 'control': it does not, i.e. the matched normal sample of a tumor, or a sample from an unaffected donor. 'unknown': it is not known whether it does, e.g. a sample from a relative whose disease status is unknown. Tumor samples are always 'case'.",
                   "enum":[
                     "case",
                     "control",
